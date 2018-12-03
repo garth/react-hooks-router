@@ -49,3 +49,34 @@ const App: React.StatelessComponent = () => {
 
 export default App
 ```
+
+# Optional OnRouted Callback
+
+A second optional parameter can be used for either a single callback that is invoked for every route change
+
+```ts
+const onRouted = ({ name, props }) => {
+  console.log(name, 'routed with props', props)
+}
+
+const App: React.StatelessComponent = () => {
+  const route = useRouter(routes, onRouted)
+  // ...
+}
+```
+
+or a collection of callbacks, one for each route
+
+```ts
+const onRouted = {
+  user: ({ name, props }) => {},
+  faq: ({ name, props }) => {},
+  login: ({ name, props }) => {},
+  notFound: ({ name, props }) => {}
+}
+
+const App: React.StatelessComponent = () => {
+  const route = useRouter(routes, onRouted)
+  // ...
+}
+```

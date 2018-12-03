@@ -13,15 +13,21 @@ export interface Route {
   name: string
   params: RouteParams
 }
+export type OnRouted = (route: Route) => any
 
-export const useRouter = (routes: Routes): Route => {
-  const [route, setRoute] = useState({ name: 'loading', params: {} })
+export const useRouter = <T extends Routes>(routes: T, onRouted?: OnRouted | { [P in keyof T]?: OnRouted }): Route => {
+  const [route, setRoute] = useState<Route>({ name: 'loading', params: {} })
 
   useEffect(() => {
     Object.keys(routes).forEach(name => {
       const path = routes[name]
+      const callback = onRouted && (typeof onRouted === 'function' ? onRouted : onRouted[name])
       page(typeof path === 'function' ? path(rawUrl) : path, ({ params }) => {
-        setRoute({ name, params })
+        const route = { name, params }
+        setRoute(route)
+        if (callback) {
+          callback(route)
+        }
       })
     })
     page.start({})
