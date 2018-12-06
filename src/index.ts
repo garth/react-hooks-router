@@ -21,7 +21,7 @@ export const useRouter = <T extends Routes>({
   onRouted,
   onRoutedUnhandled
 }: {
-  initialRoute: Route
+  initialRoute?: Route
   routes: T
   onRouted?: { [P in keyof T]?: OnRouted }
   onRoutedUnhandled?: OnRouted
