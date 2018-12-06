@@ -1,6 +1,6 @@
 {
   "name": "react-hooks-router",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A react hooks approach to routing",
   "repository": "https://github.com/garth/react-hooks-router.git",
   "author": "Garth Williams",

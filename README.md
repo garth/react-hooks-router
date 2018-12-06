@@ -39,7 +39,7 @@ import { routes } from './routes'
 import { useRouter } from 'react-hooks-router'
 
 const App: React.StatelessComponent = () => {
-  const route = useRouter(routes)
+  const route = useRouter({ routes })
   return (
     <div>
       <h1>{route.name}</h1>
@@ -50,17 +50,17 @@ const App: React.StatelessComponent = () => {
 export default App
 ```
 
-# Optional OnRouted Callback
+## Optional OnRouted Callbacks
 
-A second optional parameter can be used for either a single callback that is invoked for every route change
+Optional `onRouted` and `onRoutedUnhandled` parameters will be invoked for every matching route change
 
 ```ts
-const onRouted = ({ name, props }) => {
+const onRoutedUnhandled = ({ name, props }) => {
   console.log(name, 'routed with props', props)
 }
 
 const App: React.StatelessComponent = () => {
-  const route = useRouter(routes, onRouted)
+  const route = useRouter({ routes, onRoutedUnhandled })
   // ...
 }
 ```
@@ -76,7 +76,18 @@ const onRouted = {
 }
 
 const App: React.StatelessComponent = () => {
-  const route = useRouter(routes, onRouted)
+  const route = useRouter({ routes, onRouted })
+  // ...
+}
+```
+
+## Initial Route
+
+When your component is first rendered and before the routing effect has fired, there will be a moment when the current route has not yet been determined. By default useRouter will return `{ name: 'loading', params: {} }` until the actual route is determined. You can change this by passing in an `initialRoute`.
+
+```ts
+const App: React.StatelessComponent = () => {
+  const route = useRouter({ initialRoute: { name: 'home', params: {} }, routes })
   // ...
 }
 ```
