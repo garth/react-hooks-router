@@ -55,7 +55,7 @@ export default App
 Optional `onRouted` and `onRoutedUnhandled` parameters will be invoked for every matching route change
 
 ```ts
-const onRoutedUnhandled = ({ name, props }) => {
+const onRoutedUnhandled = ({ name, props, path }) => {
   console.log(name, 'routed with props', props)
 }
 
@@ -69,10 +69,10 @@ or a collection of callbacks, one for each route
 
 ```ts
 const onRouted = {
-  user: ({ name, props }) => {},
-  faq: ({ name, props }) => {},
-  login: ({ name, props }) => {},
-  notFound: ({ name, props }) => {}
+  user: ({ name, props, path }) => {},
+  faq: ({ name, props, path }) => {},
+  login: ({ name, props, path }) => {},
+  notFound: ({ name, props, path }) => {}
 }
 
 const App: React.StatelessComponent = () => {
@@ -87,7 +87,7 @@ When your component is first rendered and before the routing effect has fired, t
 
 ```ts
 const App: React.StatelessComponent = () => {
-  const route = useRouter({ initialRoute: { name: 'home', params: {} }, routes })
+  const route = useRouter({ initialRoute: { name: 'home', params: {}, path: '' }, routes })
   // ...
 }
 ```

@@ -1,6 +1,6 @@
 {
   "name": "react-hooks-router",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A react hooks approach to routing",
   "repository": "https://github.com/garth/react-hooks-router.git",
   "author": "Garth Williams",
@@ -29,17 +29,17 @@
     "jsxBracketSameLine": true
   },
   "devDependencies": {
-    "@types/react": "^16.7.6",
-    "prettier": "^1.15.2",
-    "react": "^16.7.0-alpha.2",
-    "rimraf": "^2.6.2",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.16.0",
-    "tslint-react": "^3.6.0",
-    "typescript": "^3.1.6"
+    "@types/react": "^16.8.23",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
-    "page": "^1.11.3",
-    "tslib": "^1.9.3"
+    "page": "^1.11.4",
+    "tslib": "^1.10.0"
   }
 }

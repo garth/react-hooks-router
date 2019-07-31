@@ -12,11 +12,12 @@ export interface Routes {
 export interface Route {
   name: string
   params: RouteParams
+  path: string
 }
 export type OnRouted = (route: Route) => any
 
 export const useRouter = <T extends Routes>({
-  initialRoute = { name: 'loading', params: {} },
+  initialRoute = { name: 'loading', params: {}, path: '' },
   routes,
   onRouted,
   onRoutedUnhandled
@@ -32,8 +33,8 @@ export const useRouter = <T extends Routes>({
     Object.keys(routes).forEach(name => {
       const path = routes[name]
       const callback = (onRouted && onRouted[name]) || onRoutedUnhandled
-      page(typeof path === 'function' ? path(rawUrl) : path, ({ params }) => {
-        const route = { name, params }
+      page(typeof path === 'function' ? path(rawUrl) : path, ({ params, path }) => {
+        const route = { name, params, path }
         setRoute(route)
         if (callback) {
           callback(route)
