@@ -10,7 +10,7 @@ export interface Routes {
   [name: string]: string | RouteToString
 }
 export interface Route {
-  name: string
+  name: keyof Routes
   params: RouteParams
   path: string
 }
